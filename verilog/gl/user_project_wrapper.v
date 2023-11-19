@@ -39,7 +39,8 @@ module user_project_wrapper (user_clock2,
  output [31:0] wbs_dat_o;
  input [3:0] wbs_sel_i;
 
-
+ anan_logo anan_logo (.vss(vss),
+    .vdd(vdd));
  user_proj_example mprj (.vdd(vdd),
     .vss(vss),
     .wb_clk_i(wb_clk_i),

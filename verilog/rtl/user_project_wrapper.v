@@ -69,7 +69,7 @@ module user_project_wrapper #(
 /*--------------------------------------*/
 /* User project is instantiated  here   */
 /*--------------------------------------*/
-
+/*
 user_proj_example mprj (
 `ifdef USE_POWER_PINS
 	.vdd(vdd),	// User area 1 1.8V power
@@ -104,6 +104,14 @@ user_proj_example mprj (
 
     // IRQ
     .irq(user_irq)
+);
+*/
+
+anan_logo anan_logo (
+`ifdef USE_POWER_PINS
+    .vdd(vdd),
+    .vss(vss)
+`endif
 );
 
 endmodule	// user_project_wrapper
