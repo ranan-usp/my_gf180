@@ -1,0 +1,6 @@
+export PDK_ROOT=/tmp/caravel_tutorial/pdk
+export PDK=gf180mcuD
+export OPENLANE_ROOT=/tmp/caravel_tutorial/openlane
+export OPENLANE_PDK=/tmp/caravel_turorial/pdk
+export CARAVEL_ROOT=/home/oe23ranan/work/gf_project/caravel
+export PRECHECK_ROOT=/home/oe23ranan/work/gf_project/precheck
