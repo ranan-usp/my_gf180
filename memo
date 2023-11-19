@@ -1,0 +1,4 @@
+https://slash-mochi.net/blog/2022/07/18/docker-cannot-connect-to-the-docker-daemon-at-unix-var-run-docker-sock-is-the-docker-daemon-running-%E3%81%B8%E3%81%AE%E5%AF%BE%E5%87%A6%E6%B3%95/
+
+sudo service docker stop
+sudo service docker start

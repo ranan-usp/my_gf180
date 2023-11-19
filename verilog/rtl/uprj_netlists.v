@@ -21,10 +21,10 @@
     // Assume default net type to be wire because GL netlists don't have the wire definitions
     `default_nettype wire
     `include "gl/user_project_wrapper.v"
-    // `include "gl/user_proj_example.v"
     `include "rtl/anan_logo.v"
+    `include "rtl/DigitalClock.v"
 `else
     `include "user_project_wrapper.v"
-    // `include "user_proj_example.v"
     `include "anan_logo.v"
+    `include "DigitalClock.v.v"
 `endif

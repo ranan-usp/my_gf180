@@ -114,6 +114,24 @@ anan_logo anan_logo (
 `endif
 );
 
+DigitalClock DigitalClock (
+`ifdef USE_POWER_PINS
+    .vdd(vdd),
+    .vss(vss)
+`endif
+
+    .clk(wb_clk_i),
+    .reset(wb_rst_i),
+
+    .hours(io_out[13:8]),
+    .hours_oeb(io_oeb[13:8]),
+    .minutes(io_out[19:14]),
+    .minutes_oeb(io_oeb[19:14]),
+    .seconds(io_out[25:20]),
+    .seconds_oeb(io_oeb[25:20])
+
+);
+
 endmodule	// user_project_wrapper
 
 `default_nettype wire
