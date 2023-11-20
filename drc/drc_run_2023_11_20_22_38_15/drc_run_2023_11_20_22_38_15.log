@@ -1,0 +1,8 @@
+21-Nov-2023 07:38:15 | INFO    | Your Klayout version is: KLayout 0.28.6
+21-Nov-2023 07:38:15 | INFO    | Your Klayout version is: KLayout 0.28.6
+21-Nov-2023 07:38:15 | INFO    | ## Generating template with for the following rule tables: ['nplus.drc', 'mim_b.drc', 'via5.drc', 'ldnmos.drc', 'sab.drc', 'otp_mk.drc', 'via4.drc', 'metal4.drc', 'lvs_bjt.drc', 'nat.drc', 'contact.drc', 'metaltop_30k.drc', 'metal3.drc', 'dummy_exclude.drc', 'metal1.drc', 'via1.drc', 'sram_3p3.drc', 'esd.drc', 'efuse.drc', 'lres.drc', 'dnwell.drc', 'mim_a.drc', 'metal5.drc', 'dualgate.drc', 'metaltop.drc', 'lvpwell.drc', 'metal2.drc', 'drc_bjt.drc', 'via3.drc', 'via2.drc', 'ymtp_mk.drc', 'comp.drc', 'sram_5p0.drc', 'poly2.drc', 'ldpmos.drc', 'pplus.drc', 'nwell.drc', 'pres.drc', 'mcell.drc', 'hres.drc']
+21-Nov-2023 07:38:15 | INFO    | ## Your run dir located at: /home/oe23ranan/work/my_gf180/drc/drc_run_2023_11_20_22_38_15
+21-Nov-2023 07:38:15 | INFO    | Running Global Foundries 180nm MCU /home/oe23ranan/work/my_gf180/gds/anan_logo.gds checks on design main on cell anan_logo:
+21-Nov-2023 07:38:20 | ERROR   | Klayout DRC run is not clean.
+21-Nov-2023 07:38:20 | ERROR   | Violated rules are : {'M4.2a', 'M4.2b'}
+

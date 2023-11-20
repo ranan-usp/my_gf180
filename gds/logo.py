@@ -1,7 +1,7 @@
 
 # Enter your Python code here
 
-    
+import math
 from pya import *
 import numpy as n
 class OriginalError(Exception):
@@ -54,10 +54,13 @@ if __name__ == '__main__':
 
         y_position = offset[1] - x*w
 
+        y_position = round(y_position,1)
+
         # right
         lcenter_position = [offset[0] + x*a_move ,y_position]
         points = [[lcenter_position[0]-length//2,lcenter_position[1]],[lcenter_position[0]+length//2,lcenter_position[1]]]
         points=n.array(points)*DBU
+        print(points)
         a1 = []
         for p in points:
             a1.append(Point.new(int(p[0]), int(p[1])))
@@ -83,12 +86,16 @@ if __name__ == '__main__':
                 a1.append(Point.new(int(p[0]), int(p[1])))
             cell.shapes(m_index).insert(Path.new(a1,wd))
 
+    
     offset = [450,offset_y]
 
+   
     # N
     for x in range(550):
 
         y_position = offset[1] - x*w
+
+        y_position = round(y_position,1)
 
         # right
         lcenter_position = [offset[0] - 110 , y_position]
@@ -126,6 +133,8 @@ if __name__ == '__main__':
 
         y_position = offset[1] - x*w
 
+        y_position = round(y_position,1)
+
         # right
         lcenter_position = [offset[0] + x*a_move ,y_position]
         points = [[lcenter_position[0]-length//2,lcenter_position[1]],[lcenter_position[0]+length//2,lcenter_position[1]]]
@@ -162,6 +171,8 @@ if __name__ == '__main__':
 
         y_position = offset[1] - x*w
 
+        y_position = round(y_position,1)
+
         # right
         lcenter_position = [offset[0] - 110 , y_position]
         points = [[lcenter_position[0]-length//2,lcenter_position[1]],[lcenter_position[0]+length//2,lcenter_position[1]]]
@@ -189,6 +200,6 @@ if __name__ == '__main__':
         for p in points:
             a1.append(Point.new(int(p[0]), int(p[1])))
         cell.shapes(m_index).insert(Path.new(a1,wd))   
-
+    
    
         
