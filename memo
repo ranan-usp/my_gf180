@@ -2,3 +2,9 @@ https://slash-mochi.net/blog/2022/07/18/docker-cannot-connect-to-the-docker-daem
 
 sudo service docker stop
 sudo service docker start
+
+
+https://qiita.com/Nw3965/items/8e75da0012cb7a451cc2
+
+
+sudo chmod 666 /var/run/docker.sock

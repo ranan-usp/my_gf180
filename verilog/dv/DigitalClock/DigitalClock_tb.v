@@ -17,7 +17,7 @@
 
 `timescale 1 ns / 1 ps
 
-module io_ports_tb;
+module DigitalClock_tb;
 	reg clock;
 	reg RSTB;
 	reg CSB;
@@ -26,9 +26,13 @@ module io_ports_tb;
 
 	wire gpio;
 	wire [37:0] mprj_io;
-	wire [7:0] mprj_io_0;
+	wire [5:0] mprj_io_0;
+	wire [5:0] mprj_io_1;
+	wire [5:0] mprj_io_2;
 
-	assign mprj_io_0 = mprj_io[7:0];
+	assign mprj_io_0 = mprj_io[13:8];
+	assign mprj_io_1 = mprj_io[19:14];
+	assign mprj_io_2 = mprj_io[25:20];
 	// assign mprj_io_0 = {mprj_io[8:4],mprj_io[2:0]};
 
 	assign mprj_io[3] = (CSB == 1'b1) ? 1'b1 : 1'bz;
@@ -141,8 +145,8 @@ module io_ports_tb;
 	`endif 
 
 	initial begin
-		$dumpfile("io_ports.vcd");
-		$dumpvars(0, io_ports_tb);
+		$dumpfile(" DigitalClock.vcd");
+		$dumpvars(0,  DigitalClock_tb);
 
 		// Repeat cycles of 1000 clock edges as needed to complete testbench
 		repeat (25) begin
@@ -173,6 +177,30 @@ module io_ports_tb;
 		wait(mprj_io_0 == 8'h0A);   
 		wait(mprj_io_0 == 8'hFF);
 		wait(mprj_io_0 == 8'h00);
+		wait(mprj_io_1 == 8'h01);
+		wait(mprj_io_1 == 8'h02);
+		wait(mprj_io_1 == 8'h03);
+		wait(mprj_io_1 == 8'h04);
+		wait(mprj_io_1 == 8'h05);
+		wait(mprj_io_1 == 8'h06);
+		wait(mprj_io_1 == 8'h07);
+		wait(mprj_io_1 == 8'h08);
+		wait(mprj_io_1 == 8'h09);
+		wait(mprj_io_1 == 8'h0A);   
+		wait(mprj_io_1 == 8'hFF);
+		wait(mprj_io_1 == 8'h00);
+		wait(mprj_io_2 == 8'h01);
+		wait(mprj_io_2 == 8'h02);
+		wait(mprj_io_2 == 8'h03);
+		wait(mprj_io_2 == 8'h04);
+		wait(mprj_io_2 == 8'h05);
+		wait(mprj_io_2 == 8'h06);
+		wait(mprj_io_2 == 8'h07);
+		wait(mprj_io_2 == 8'h08);
+		wait(mprj_io_2 == 8'h09);
+		wait(mprj_io_2 == 8'h0A);   
+		wait(mprj_io_2 == 8'hFF);
+		wait(mprj_io_2 == 8'h00);
 		
 		`ifdef GL
 	    	$display("Monitor: Test 1 Mega-Project IO (GL) Passed");
@@ -253,7 +281,7 @@ module io_ports_tb;
 	);
 
 	spiflash #(
-		.FILENAME("io_ports.hex")
+		.FILENAME(" DigitalClock.hex")
 	) spiflash (
 		.csb(flash_csb),
 		.clk(flash_clk),

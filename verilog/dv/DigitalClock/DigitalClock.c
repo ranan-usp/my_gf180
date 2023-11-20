@@ -75,6 +75,8 @@ void main()
 	reg_mprj_io_21 =  GPIO_MODE_USER_STD_OUTPUT;
 	reg_mprj_io_22 =  GPIO_MODE_USER_STD_OUTPUT;
 	reg_mprj_io_23 =  GPIO_MODE_USER_STD_OUTPUT;
+	reg_mprj_io_24 =  GPIO_MODE_USER_STD_OUTPUT;
+	reg_mprj_io_25 =  GPIO_MODE_USER_STD_OUTPUT;
 
 	/* Apply configuration */
 	reg_mprj_xfer = 1;
