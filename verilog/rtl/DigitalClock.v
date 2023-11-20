@@ -38,11 +38,11 @@
 module DigitalClock (
 `ifdef USE_POWER_PINS
     inout vdd,	// User area 1 1.8V supply
-    inout vss	// User area 1 digital ground
+    inout vss,	// User area 1 digital ground
 `endif
 
-    input wire clk,       // クロック信号
-    input wire reset,     // リセット信号
+    input clk,       // クロック信号
+    input reset,     // リセット信号
     output reg [5:0] hours,   // 時 (00-23)
     output reg [5:0] hours_oeb,   // 時 (00-23)
     output reg [5:0] minutes, // 分 (00-59)
@@ -52,9 +52,9 @@ module DigitalClock (
 
 );
 
-assign hours_oeb = 6'b000000;
-assign minutes_oeb = 6'b000000;
-assign seconds_oeb = 6'b000000;
+// assign hours_oeb = 6'b000000;
+// assign minutes_oeb = 6'b000000;
+// assign seconds_oeb = 6'b000000;
 
 // 1秒ごとにインクリメントするためのカウンタ
 reg [25:0] one_second_counter;
@@ -68,6 +68,9 @@ always @(posedge clk or posedge reset) begin
         hours <= 0;
         minutes <= 0;
         seconds <= 0;
+        hours_oeb <= 0;  // ここに追加
+        minutes_oeb <= 0; // ここに追加
+        seconds_oeb <= 0; // ここに追加
     end else begin
         // 1秒ごとのインクリメント
         if (one_second_counter >= 50000000) begin // 50MHzのクロックで1秒

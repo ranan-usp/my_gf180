@@ -19,6 +19,7 @@
 
 module DigitalClock_tb;
 	reg clock;
+	reg reset;
 	reg RSTB;
 	reg CSB;
 	reg power1, power2;
@@ -26,13 +27,9 @@ module DigitalClock_tb;
 
 	wire gpio;
 	wire [37:0] mprj_io;
-	wire [5:0] mprj_io_0;
-	wire [5:0] mprj_io_1;
-	wire [5:0] mprj_io_2;
+	wire [17:0] mprj_io_0;
 
-	assign mprj_io_0 = mprj_io[13:8];
-	assign mprj_io_1 = mprj_io[19:14];
-	assign mprj_io_2 = mprj_io[25:20];
+	assign mprj_io_0 = mprj_io[25:8];
 	// assign mprj_io_0 = {mprj_io[8:4],mprj_io[2:0]};
 
 	assign mprj_io[3] = (CSB == 1'b1) ? 1'b1 : 1'bz;
@@ -43,109 +40,15 @@ module DigitalClock_tb;
 	// would be the fast clock.
 
 	always #12.5 clock <= (clock === 1'b0);
+	always #125 reset <= (reset === 1'b0);
 
 	initial begin
 		clock = 0;
+		reset = 0;
 	end
 
-
-	`ifdef ENABLE_SDF
-		initial begin
-			$sdf_annotate("../../../sdf/user_proj_example.sdf", uut.mprj) ;
-			$sdf_annotate("../../../sdf/user_project_wrapper.sdf", uut.mprj.mprj) ;
-			$sdf_annotate("../../../mgmt_core_wrapper/sdf/DFFRAM.sdf", uut.soc.DFFRAM_0) ;
-			$sdf_annotate("../../../mgmt_core_wrapper/sdf/mgmt_core.sdf", uut.soc.core) ;
-			$sdf_annotate("../../../caravel/sdf/housekeeping.sdf", uut.housekeeping) ;
-			$sdf_annotate("../../../caravel/sdf/chip_io.sdf", uut.padframe) ;
-			$sdf_annotate("../../../caravel/sdf/mprj_logic_high.sdf", uut.mgmt_buffers.mprj_logic_high_inst) ;
-			$sdf_annotate("../../../caravel/sdf/mprj2_logic_high.sdf", uut.mgmt_buffers.mprj2_logic_high_inst) ;
-			$sdf_annotate("../../../caravel/sdf/mgmt_protect_hv.sdf", uut.mgmt_buffers.powergood_check) ;
-			$sdf_annotate("../../../caravel/sdf/mgmt_protect.sdf", uut.mgmt_buffers) ;
-			$sdf_annotate("../../../caravel/sdf/caravel_clocking.sdf", uut.clocking) ;
-			$sdf_annotate("../../../caravel/sdf/digital_pll.sdf", uut.pll) ;
-			$sdf_annotate("../../../caravel/sdf/xres_buf.sdf", uut.rstb_level) ;
-			$sdf_annotate("../../../caravel/sdf/user_id_programming.sdf", uut.user_id_value) ;
-			$sdf_annotate("../../../caravel/sdf/gpio_control_block.sdf", uut.\gpio_control_bidir_1[0] ) ;
-			$sdf_annotate("../../../caravel/sdf/gpio_control_block.sdf", uut.\gpio_control_bidir_1[1] ) ;
-			$sdf_annotate("../../../caravel/sdf/gpio_control_block.sdf", uut.\gpio_control_bidir_2[0] ) ;
-			$sdf_annotate("../../../caravel/sdf/gpio_control_block.sdf", uut.\gpio_control_bidir_2[1] ) ;
-			$sdf_annotate("../../../caravel/sdf/gpio_control_block.sdf", uut.\gpio_control_bidir_2[2] ) ;
-			$sdf_annotate("../../../caravel/sdf/gpio_control_block.sdf", uut.\gpio_control_in_1[0] ) ;
-			$sdf_annotate("../../../caravel/sdf/gpio_control_block.sdf", uut.\gpio_control_in_1[1] ) ;
-			$sdf_annotate("../../../caravel/sdf/gpio_control_block.sdf", uut.\gpio_control_in_1[2] ) ;
-			$sdf_annotate("../../../caravel/sdf/gpio_control_block.sdf", uut.\gpio_control_in_1[3] ) ;
-			$sdf_annotate("../../../caravel/sdf/gpio_control_block.sdf", uut.\gpio_control_in_1[4] ) ;
-			$sdf_annotate("../../../caravel/sdf/gpio_control_block.sdf", uut.\gpio_control_in_1[5] ) ;
-			$sdf_annotate("../../../caravel/sdf/gpio_control_block.sdf", uut.\gpio_control_in_1[6] ) ;
-			$sdf_annotate("../../../caravel/sdf/gpio_control_block.sdf", uut.\gpio_control_in_1[7] ) ;
-			$sdf_annotate("../../../caravel/sdf/gpio_control_block.sdf", uut.\gpio_control_in_1[8] ) ;
-			$sdf_annotate("../../../caravel/sdf/gpio_control_block.sdf", uut.\gpio_control_in_1[9] ) ;
-			$sdf_annotate("../../../caravel/sdf/gpio_control_block.sdf", uut.\gpio_control_in_1[10] ) ;
-			$sdf_annotate("../../../caravel/sdf/gpio_control_block.sdf", uut.\gpio_control_in_1a[0] ) ;
-			$sdf_annotate("../../../caravel/sdf/gpio_control_block.sdf", uut.\gpio_control_in_1a[1] ) ;
-			$sdf_annotate("../../../caravel/sdf/gpio_control_block.sdf", uut.\gpio_control_in_1a[2] ) ;
-			$sdf_annotate("../../../caravel/sdf/gpio_control_block.sdf", uut.\gpio_control_in_1a[3] ) ;
-			$sdf_annotate("../../../caravel/sdf/gpio_control_block.sdf", uut.\gpio_control_in_1a[4] ) ;
-			$sdf_annotate("../../../caravel/sdf/gpio_control_block.sdf", uut.\gpio_control_in_1a[5] ) ;
-			$sdf_annotate("../../../caravel/sdf/gpio_control_block.sdf", uut.\gpio_control_in_2[0] ) ;
-			$sdf_annotate("../../../caravel/sdf/gpio_control_block.sdf", uut.\gpio_control_in_2[1] ) ;
-			$sdf_annotate("../../../caravel/sdf/gpio_control_block.sdf", uut.\gpio_control_in_2[2] ) ;
-			$sdf_annotate("../../../caravel/sdf/gpio_control_block.sdf", uut.\gpio_control_in_2[3] ) ;
-			$sdf_annotate("../../../caravel/sdf/gpio_control_block.sdf", uut.\gpio_control_in_2[4] ) ;
-			$sdf_annotate("../../../caravel/sdf/gpio_control_block.sdf", uut.\gpio_control_in_2[5] ) ;
-			$sdf_annotate("../../../caravel/sdf/gpio_control_block.sdf", uut.\gpio_control_in_2[6] ) ;
-			$sdf_annotate("../../../caravel/sdf/gpio_control_block.sdf", uut.\gpio_control_in_2[7] ) ;
-			$sdf_annotate("../../../caravel/sdf/gpio_control_block.sdf", uut.\gpio_control_in_2[8] ) ;
-			$sdf_annotate("../../../caravel/sdf/gpio_control_block.sdf", uut.\gpio_control_in_2[9] ) ;
-			$sdf_annotate("../../../caravel/sdf/gpio_control_block.sdf", uut.\gpio_control_in_2[10] ) ;
-			$sdf_annotate("../../../caravel/sdf/gpio_control_block.sdf", uut.\gpio_control_in_2[11] ) ;
-			$sdf_annotate("../../../caravel/sdf/gpio_control_block.sdf", uut.\gpio_control_in_2[12] ) ;
-			$sdf_annotate("../../../caravel/sdf/gpio_control_block.sdf", uut.\gpio_control_in_2[13] ) ;
-			$sdf_annotate("../../../caravel/sdf/gpio_control_block.sdf", uut.\gpio_control_in_2[14] ) ;
-			$sdf_annotate("../../../caravel/sdf/gpio_control_block.sdf", uut.\gpio_control_in_2[15] ) ;
-			$sdf_annotate("../../../caravel/sdf/gpio_defaults_block.sdf", uut.\gpio_defaults_block_0[0] ) ;
-			$sdf_annotate("../../../caravel/sdf/gpio_defaults_block.sdf", uut.\gpio_defaults_block_0[1] ) ;
-			$sdf_annotate("../../../caravel/sdf/gpio_defaults_block.sdf", uut.\gpio_defaults_block_2[0] ) ;
-			$sdf_annotate("../../../caravel/sdf/gpio_defaults_block.sdf", uut.\gpio_defaults_block_2[1] ) ;
-			$sdf_annotate("../../../caravel/sdf/gpio_defaults_block.sdf", uut.\gpio_defaults_block_2[2] ) ;
-			$sdf_annotate("../../../caravel/sdf/gpio_defaults_block.sdf", uut.gpio_defaults_block_5) ;
-			$sdf_annotate("../../../caravel/sdf/gpio_defaults_block.sdf", uut.gpio_defaults_block_6) ;
-			$sdf_annotate("../../../caravel/sdf/gpio_defaults_block.sdf", uut.gpio_defaults_block_7) ;
-			$sdf_annotate("../../../caravel/sdf/gpio_defaults_block.sdf", uut.gpio_defaults_block_8) ;
-			$sdf_annotate("../../../caravel/sdf/gpio_defaults_block.sdf", uut.gpio_defaults_block_9) ;
-			$sdf_annotate("../../../caravel/sdf/gpio_defaults_block.sdf", uut.gpio_defaults_block_10) ;
-			$sdf_annotate("../../../caravel/sdf/gpio_defaults_block.sdf", uut.gpio_defaults_block_11) ;
-			$sdf_annotate("../../../caravel/sdf/gpio_defaults_block.sdf", uut.gpio_defaults_block_12) ;
-			$sdf_annotate("../../../caravel/sdf/gpio_defaults_block.sdf", uut.gpio_defaults_block_13) ;
-			$sdf_annotate("../../../caravel/sdf/gpio_defaults_block.sdf", uut.gpio_defaults_block_14) ;
-			$sdf_annotate("../../../caravel/sdf/gpio_defaults_block.sdf", uut.gpio_defaults_block_15) ;
-			$sdf_annotate("../../../caravel/sdf/gpio_defaults_block.sdf", uut.gpio_defaults_block_16) ;
-			$sdf_annotate("../../../caravel/sdf/gpio_defaults_block.sdf", uut.gpio_defaults_block_17) ;
-			$sdf_annotate("../../../caravel/sdf/gpio_defaults_block.sdf", uut.gpio_defaults_block_18) ;
-			$sdf_annotate("../../../caravel/sdf/gpio_defaults_block.sdf", uut.gpio_defaults_block_19) ;
-			$sdf_annotate("../../../caravel/sdf/gpio_defaults_block.sdf", uut.gpio_defaults_block_20) ;
-			$sdf_annotate("../../../caravel/sdf/gpio_defaults_block.sdf", uut.gpio_defaults_block_21) ;
-			$sdf_annotate("../../../caravel/sdf/gpio_defaults_block.sdf", uut.gpio_defaults_block_22) ;
-			$sdf_annotate("../../../caravel/sdf/gpio_defaults_block.sdf", uut.gpio_defaults_block_23) ;
-			$sdf_annotate("../../../caravel/sdf/gpio_defaults_block.sdf", uut.gpio_defaults_block_24) ;
-			$sdf_annotate("../../../caravel/sdf/gpio_defaults_block.sdf", uut.gpio_defaults_block_25) ;
-			$sdf_annotate("../../../caravel/sdf/gpio_defaults_block.sdf", uut.gpio_defaults_block_26) ;
-			$sdf_annotate("../../../caravel/sdf/gpio_defaults_block.sdf", uut.gpio_defaults_block_27) ;
-			$sdf_annotate("../../../caravel/sdf/gpio_defaults_block.sdf", uut.gpio_defaults_block_28) ;
-			$sdf_annotate("../../../caravel/sdf/gpio_defaults_block.sdf", uut.gpio_defaults_block_29) ;
-			$sdf_annotate("../../../caravel/sdf/gpio_defaults_block.sdf", uut.gpio_defaults_block_30) ;
-			$sdf_annotate("../../../caravel/sdf/gpio_defaults_block.sdf", uut.gpio_defaults_block_31) ;
-			$sdf_annotate("../../../caravel/sdf/gpio_defaults_block.sdf", uut.gpio_defaults_block_32) ;
-			$sdf_annotate("../../../caravel/sdf/gpio_defaults_block.sdf", uut.gpio_defaults_block_33) ;
-			$sdf_annotate("../../../caravel/sdf/gpio_defaults_block.sdf", uut.gpio_defaults_block_34) ;
-			$sdf_annotate("../../../caravel/sdf/gpio_defaults_block.sdf", uut.gpio_defaults_block_35) ;
-			$sdf_annotate("../../../caravel/sdf/gpio_defaults_block.sdf", uut.gpio_defaults_block_36) ;
-			$sdf_annotate("../../../caravel/sdf/gpio_defaults_block.sdf", uut.gpio_defaults_block_37) ;
-		end
-	`endif 
-
 	initial begin
-		$dumpfile(" DigitalClock.vcd");
+		$dumpfile("DigitalClock.vcd");
 		$dumpvars(0,  DigitalClock_tb);
 
 		// Repeat cycles of 1000 clock edges as needed to complete testbench
@@ -177,30 +80,6 @@ module DigitalClock_tb;
 		wait(mprj_io_0 == 8'h0A);   
 		wait(mprj_io_0 == 8'hFF);
 		wait(mprj_io_0 == 8'h00);
-		wait(mprj_io_1 == 8'h01);
-		wait(mprj_io_1 == 8'h02);
-		wait(mprj_io_1 == 8'h03);
-		wait(mprj_io_1 == 8'h04);
-		wait(mprj_io_1 == 8'h05);
-		wait(mprj_io_1 == 8'h06);
-		wait(mprj_io_1 == 8'h07);
-		wait(mprj_io_1 == 8'h08);
-		wait(mprj_io_1 == 8'h09);
-		wait(mprj_io_1 == 8'h0A);   
-		wait(mprj_io_1 == 8'hFF);
-		wait(mprj_io_1 == 8'h00);
-		wait(mprj_io_2 == 8'h01);
-		wait(mprj_io_2 == 8'h02);
-		wait(mprj_io_2 == 8'h03);
-		wait(mprj_io_2 == 8'h04);
-		wait(mprj_io_2 == 8'h05);
-		wait(mprj_io_2 == 8'h06);
-		wait(mprj_io_2 == 8'h07);
-		wait(mprj_io_2 == 8'h08);
-		wait(mprj_io_2 == 8'h09);
-		wait(mprj_io_2 == 8'h0A);   
-		wait(mprj_io_2 == 8'hFF);
-		wait(mprj_io_2 == 8'h00);
 		
 		`ifdef GL
 	    	$display("Monitor: Test 1 Mega-Project IO (GL) Passed");
@@ -235,7 +114,7 @@ module DigitalClock_tb;
 	end
 
 	always @(mprj_io) begin
-		#1 $display("MPRJ-IO state = %b ", mprj_io[7:0]);
+		#1 $display("MPRJ-IO state = %b ", mprj_io[25:8]);
 	end
 
 	wire flash_csb;
@@ -252,25 +131,9 @@ module DigitalClock_tb;
 	assign VSS = 1'b0;
 
 	caravel uut (
-		.vddio	  (VDD3V3),
-		.vddio_2  (VDD3V3),
-		.vssio	  (VSS),
-		.vssio_2  (VSS),
-		.vdda	  (VDD3V3),
-		.vssa	  (VSS),
-		.vccd	  (VDD1V8),
-		.vssd	  (VSS),
-		.vdda1    (VDD3V3),
-		.vdda1_2  (VDD3V3),
-		.vdda2    (VDD3V3),
-		.vssa1	  (VSS),
-		.vssa1_2  (VSS),
-		.vssa2	  (VSS),
-		.vccd1	  (VDD1V8),
-		.vccd2	  (VDD1V8),
-		.vssd1	  (VSS),
-		.vssd2	  (VSS),
-		.clock    (clock),
+		.VDD 	  (VDD3V3),
+		.VSS	  (VSS),
+		.clock	  (clock),
 		.gpio     (gpio),
 		.mprj_io  (mprj_io),
 		.flash_csb(flash_csb),
@@ -281,7 +144,7 @@ module DigitalClock_tb;
 	);
 
 	spiflash #(
-		.FILENAME(" DigitalClock.hex")
+		.FILENAME("DigitalClock.hex")
 	) spiflash (
 		.csb(flash_csb),
 		.clk(flash_clk),

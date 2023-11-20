@@ -117,7 +117,7 @@ anan_logo anan_logo (
 DigitalClock DigitalClock (
 `ifdef USE_POWER_PINS
     .vdd(vdd),
-    .vss(vss)
+    .vss(vss),
 `endif
 
     .clk(wb_clk_i),
