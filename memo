@@ -8,3 +8,15 @@ https://qiita.com/Nw3965/items/8e75da0012cb7a451cc2
 
 
 sudo chmod 666 /var/run/docker.sock
+
+
+rm -rf caravel
+git clone -b gfmpw-1b https://github.com/efabless/caravel-gf180mcu ./caravel --depth=1
+
+
+https://github.com/mattvenn/caravel_walkthrough.git
+
+
+http://opencircuitdesign.com/magic/commandref/lef.html
+logo magic gds -> lef
+

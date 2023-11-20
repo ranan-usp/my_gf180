@@ -44,54 +44,52 @@ module DigitalClock (
     input clk,       // クロック信号
     input reset,     // リセット信号
     output reg [5:0] hours,   // 時 (00-23)
-    output reg [5:0] hours_oeb,   // 時 (00-23)
+    output wire [5:0] hours_oeb,   // 時 (00-23)
     output reg [5:0] minutes, // 分 (00-59)
-    output reg [5:0] minutes_oeb, // 分 (00-59)
+    output wire [5:0] minutes_oeb, // 分 (00-59)
     output reg [5:0] seconds,  // 秒 (00-59)
-    output reg [5:0] seconds_oeb  // 秒 (00-59)
+    output wire [5:0] seconds_oeb  // 秒 (00-59)
 
 );
 
-// assign hours_oeb = 6'b000000;
-// assign minutes_oeb = 6'b000000;
-// assign seconds_oeb = 6'b000000;
-
-// 1秒ごとにインクリメントするためのカウンタ
-reg [25:0] one_second_counter;
 
 
+    // 1秒ごとにインクリメントするためのカウンタ
+    reg [25:0] one_second_counter;
 
-always @(posedge clk or posedge reset) begin
-    if (reset) begin
-        // リセット時の初期化
-        one_second_counter <= 0;
-        hours <= 0;
-        minutes <= 0;
-        seconds <= 0;
-        hours_oeb <= 0;  // ここに追加
-        minutes_oeb <= 0; // ここに追加
-        seconds_oeb <= 0; // ここに追加
-    end else begin
-        // 1秒ごとのインクリメント
-        if (one_second_counter >= 50000000) begin // 50MHzのクロックで1秒
-            one_second_counter <= 0;
-            seconds <= seconds + 1;
-            if (seconds >= 59) begin
-                seconds <= 0;
-                minutes <= minutes + 1;
-                if (minutes >= 59) begin
-                    minutes <= 0;
-                    hours <= hours + 1;
-                    if (hours >= 23) begin
-                        hours <= 0;
+    assign hours_oeb = 6'b000000;
+    assign minutes_oeb = 6'b000000;
+    assign seconds_oeb = 6'b000000;
+    
+
+    always @(posedge clk) begin
+        if (reset) begin
+            // リセット時の初期化
+            one_second_counter <= 26'b0;
+            hours <= 6'b0;
+            minutes <= 6'b0;
+            seconds <= 6'b0;
+        end else begin
+            // 1秒ごとのインクリメント
+            if (one_second_counter >= 50000000) begin // 50MHzのクロックで1秒
+                one_second_counter <= 26'b0;
+                seconds <= seconds + 1'b1;
+                if (seconds >= 6'b111011) begin
+                    seconds <= 6'b0;
+                    minutes <= minutes + 1'b1;
+                    if (minutes >= 6'b111011) begin
+                        minutes <= 6'b0;
+                        hours <= hours + 1'b1;
+                        if (hours >= 6'b010111) begin
+                            hours <= 6'b0;
+                        end
                     end
                 end
+            end else begin
+                one_second_counter <= one_second_counter + 1'b1;
             end
-        end else begin
-            one_second_counter <= one_second_counter + 1;
         end
     end
-end
 
 endmodule
     

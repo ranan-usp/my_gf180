@@ -20,6 +20,8 @@
 module DigitalClock_tb;
 	reg clock;
 	reg reset;
+	reg design_clk;
+	reg design_rst;
 	reg RSTB;
 	reg CSB;
 	reg power1, power2;
@@ -27,9 +29,13 @@ module DigitalClock_tb;
 
 	wire gpio;
 	wire [37:0] mprj_io;
-	wire [17:0] mprj_io_0;
+	wire [5:0] mprj_io_hours;
+	wire [5:0] mprj_io_minutes;
+	wire [5:0] mprj_io_seconds;
 
-	assign mprj_io_0 = mprj_io[25:8];
+	assign mprj_io_hours = mprj_io[5:0];
+	assign mprj_io_minutes = mprj_io[11:6];
+	assign mprj_io_seconds = mprj_io[17:12];
 	// assign mprj_io_0 = {mprj_io[8:4],mprj_io[2:0]};
 
 	assign mprj_io[3] = (CSB == 1'b1) ? 1'b1 : 1'bz;
@@ -40,11 +46,9 @@ module DigitalClock_tb;
 	// would be the fast clock.
 
 	always #12.5 clock <= (clock === 1'b0);
-	always #125 reset <= (reset === 1'b0);
 
 	initial begin
 		clock = 0;
-		reset = 0;
 	end
 
 	initial begin
@@ -68,18 +72,14 @@ module DigitalClock_tb;
 
 	initial begin
 	    // Observe Output pins [7:0]
-		wait(mprj_io_0 == 8'h01);
-		wait(mprj_io_0 == 8'h02);
-		wait(mprj_io_0 == 8'h03);
-		wait(mprj_io_0 == 8'h04);
-		wait(mprj_io_0 == 8'h05);
-		wait(mprj_io_0 == 8'h06);
-		wait(mprj_io_0 == 8'h07);
-		wait(mprj_io_0 == 8'h08);
-		wait(mprj_io_0 == 8'h09);
-		wait(mprj_io_0 == 8'h0A);   
-		wait(mprj_io_0 == 8'hFF);
-		wait(mprj_io_0 == 8'h00);
+		wait(mprj_io_seconds == 6'b000001);
+		wait(mprj_io_seconds == 6'b000010);
+		wait(mprj_io_seconds == 6'b000011);
+		wait(mprj_io_seconds == 6'b000100);
+		wait(mprj_io_seconds == 6'b000101);
+		wait(mprj_io_seconds == 6'b000110);
+		wait(mprj_io_seconds == 6'b000111);
+		wait(mprj_io_seconds == 6'b001000);
 		
 		`ifdef GL
 	    	$display("Monitor: Test 1 Mega-Project IO (GL) Passed");
@@ -124,14 +124,16 @@ module DigitalClock_tb;
 
 	wire VDD3V3;
 	wire VDD1V8;
+	wire VDD;
 	wire VSS;
 	
 	assign VDD3V3 = power1;
 	assign VDD1V8 = power2;
+	assign VDD = power1;
 	assign VSS = 1'b0;
 
 	caravel uut (
-		.VDD 	  (VDD3V3),
+		.VDD 	  (VDD),
 		.VSS	  (VSS),
 		.clock	  (clock),
 		.gpio     (gpio),

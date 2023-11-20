@@ -107,6 +107,8 @@ user_proj_example mprj (
 );
 */
 
+wire reset;
+
 anan_logo anan_logo (
 `ifdef USE_POWER_PINS
     .vdd(vdd),
@@ -119,17 +121,14 @@ DigitalClock DigitalClock (
     .vdd(vdd),
     .vss(vss),
 `endif
-
     .clk(wb_clk_i),
     .reset(wb_rst_i),
-
-    .hours(io_out[13:8]),
-    .hours_oeb(io_oeb[13:8]),
-    .minutes(io_out[19:14]),
-    .minutes_oeb(io_oeb[19:14]),
-    .seconds(io_out[25:20]),
-    .seconds_oeb(io_oeb[25:20])
-
+    .hours(io_out[5:0]),
+    .hours_oeb(io_oeb[5:0]),
+    .minutes(io_out[11:6]),
+    .minutes_oeb(io_oeb[11:6]),
+    .seconds(io_out[17:12]),
+    .seconds_oeb(io_oeb[17:12])
 );
 
 endmodule	// user_project_wrapper
