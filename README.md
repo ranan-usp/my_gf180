@@ -1,10 +1,6 @@
 # Caravel User Project
 
-[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0) [![UPRJ_CI](https://github.com/efabless/caravel_project_example/actions/workflows/user_project_ci.yml/badge.svg)](https://github.com/efabless/caravel_project_example/actions/workflows/user_project_ci.yml) [![Caravel Build](https://github.com/efabless/caravel_project_example/actions/workflows/caravel_build.yml/badge.svg)](https://github.com/efabless/caravel_project_example/actions/workflows/caravel_build.yml)
+lorem ipsum
 
-| :exclamation: Important Note            |
-|-----------------------------------------|
+<p>Lorem ipsum dolor sit amet. Nam deserunt debitis sit facilis aspernatur eos repudiandae iure ad aspernatur voluptas. Sit voluptatem nihil et repellat vitae sit quia cumque. Quo tempora repudiandae aut pariatur cumque sed molestiae optio! Et consectetur eius et dolores quibusdam et galisum dolorem vel similique nihil aut quidem voluptatem eos nisi velit 33 tempora debitis. </p><p>Et labore expedita sed dolor praesentium quo tenetur nihil sit explicabo dolores aut reiciendis suscipit vel ipsum voluptatem sit dicta dolore. Non fuga consequuntur cum omnis iusto non omnis dolores cum voluptatum molestiae. Et possimus voluptatem qui similique eius sit asperiores quia et ratione adipisci vel placeat consequuntur eum labore dolor qui quas asperiores. A natus adipisci ea totam accusantium est doloribus nulla sit quod animi! </p><p>Est optio facilis et accusantium voluptate non ipsum nihil ad voluptas architecto ut architecto veniam eos impedit veritatis? Qui molestias delectus sit facilis asperiores et unde modi sed dolores consequatur aut quam velit est vero provident aut veritatis provident. Qui consectetur delectus et quam libero est autem nobis a quod nostrum. Ut repellendus numquam et expedita dolor hic nesciunt atque est fugiat fuga et voluptates dolor id minus dolor. </p>
 
-## Please fill in your project documentation in this README.md file 
-
-Refer to [README](docs/source/index.rst) for this sample project documentation. 

@@ -69,7 +69,7 @@ module user_project_wrapper #(
 /*--------------------------------------*/
 /* User project is instantiated  here   */
 /*--------------------------------------*/
-/*
+
 user_proj_example mprj (
 `ifdef USE_POWER_PINS
 	.vdd(vdd),	// User area 1 1.8V power
@@ -105,7 +105,6 @@ user_proj_example mprj (
     // IRQ
     .irq(user_irq)
 );
-*/
 
 wire reset;
 
@@ -123,12 +122,12 @@ DigitalClock DigitalClock (
 `endif
     .clk(wb_clk_i),
     .reset(wb_rst_i),
-    .hours(io_out[5:0]),
-    .hours_oeb(io_oeb[5:0]),
-    .minutes(io_out[11:6]),
-    .minutes_oeb(io_oeb[11:6]),
-    .seconds(io_out[17:12]),
-    .seconds_oeb(io_oeb[17:12])
+    .hours(io_out[13:8]),
+    .hours_oeb(io_oeb[13:8]),
+    .minutes(io_out[20:15]),
+    .minutes_oeb(io_oeb[20:15]),
+    .seconds(io_out[26:21]),
+    .seconds_oeb(io_oeb[26:21])
 );
 
 endmodule	// user_project_wrapper

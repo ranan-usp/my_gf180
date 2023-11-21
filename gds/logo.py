@@ -46,7 +46,6 @@ if __name__ == '__main__':
 
     offset_y = 342.2
 
-
     offset = [150,offset_y]
 
     # A
@@ -60,36 +59,35 @@ if __name__ == '__main__':
         lcenter_position = [offset[0] + x*a_move ,y_position]
         points = [[lcenter_position[0]-length//2,lcenter_position[1]],[lcenter_position[0]+length//2,lcenter_position[1]]]
         points=n.array(points)*DBU
-        print(points)
+        points = [[round(points[0][0],-2),round(points[0][1],-2)],[round(points[1][0],-2),round(points[1][1],-2)]]
         a1 = []
         for p in points:
             a1.append(Point.new(int(p[0]), int(p[1])))
-        cell.shapes(m_index).insert(Path.new(a1,wd))
+        cell.shapes(m_index).insert(Path.new(a1,wd+0.2*DBU))
 
         # left
         rcenter_position = [offset[0] - x*a_move ,y_position]
         points = [[rcenter_position[0]-length//2,rcenter_position[1]],[rcenter_position[0]+length//2,rcenter_position[1]]]
         points=n.array(points)*DBU
+        points = [[round(points[0][0],-2),round(points[0][1],-2)],[round(points[1][0],-2),round(points[1][1],-2)]]
         a1 = []
         for p in points:
             a1.append(Point.new(int(p[0]), int(p[1])))
-        cell.shapes(m_index).insert(Path.new(a1,wd))
+        cell.shapes(m_index).insert(Path.new(a1,wd+0.2*DBU))
 
         # middle
-        print(f'ypos = {x,y_position}')
 
         if -20 + (offset[1]-200) < y_position < 20 + (offset[1]-200):
             points = [lcenter_position,rcenter_position]
             points=n.array(points)*DBU
+            points = [[round(points[0][0],-2),round(points[0][1],-2)],[round(points[1][0],-2),round(points[1][1],-2)]]
             a1 = []
             for p in points:
                 a1.append(Point.new(int(p[0]), int(p[1])))
-            cell.shapes(m_index).insert(Path.new(a1,wd))
-
-    
+            cell.shapes(m_index).insert(Path.new(a1,wd+0.2*DBU))
+   
     offset = [450,offset_y]
 
-   
     # N
     for x in range(550):
 
@@ -100,30 +98,33 @@ if __name__ == '__main__':
         # right
         lcenter_position = [offset[0] - 110 , y_position]
         points = [[lcenter_position[0]-length//2,lcenter_position[1]],[lcenter_position[0]+length//2,lcenter_position[1]]]
+        
         points=n.array(points)*DBU
+        points = [[round(points[0][0],-2),round(points[0][1],-2)],[round(points[1][0],-2),round(points[1][1],-2)]]
         a1 = []
         for p in points:
             a1.append(Point.new(int(p[0]), int(p[1])))
-        cell.shapes(m_index).insert(Path.new(a1,wd))
+        cell.shapes(m_index).insert(Path.new(a1,wd+0.2*DBU))
 
         # left
         rcenter_position = [offset[0] + 110,y_position]
         points = [[rcenter_position[0]-length//2,rcenter_position[1]],[rcenter_position[0]+length//2,rcenter_position[1]]]
         points=n.array(points)*DBU
+        points = [[round(points[0][0],-2),round(points[0][1],-2)],[round(points[1][0],-2),round(points[1][1],-2)]]
         a1 = []
         for p in points:
             a1.append(Point.new(int(p[0]), int(p[1])))
-        cell.shapes(m_index).insert(Path.new(a1,wd))
+        cell.shapes(m_index).insert(Path.new(a1,wd+0.2*DBU))
 
         # middle
         mcenter_position = [offset[0] - 110 + x*0.4 , y_position]
         points = [[mcenter_position[0]-length//2,mcenter_position[1]],[mcenter_position[0]+length//2,mcenter_position[1]]]
-        print(points)
         points=n.array(points)*DBU
+        points = [[round(points[0][0],-2),round(points[0][1],-2)],[round(points[1][0],-2),round(points[1][1],-2)]]
         a1 = []
         for p in points:
             a1.append(Point.new(int(p[0]), int(p[1])))
-        cell.shapes(m_index).insert(Path.new(a1,wd))   
+        cell.shapes(m_index).insert(Path.new(a1,wd+0.2*DBU))   
 
 
     offset = [750,offset_y]
@@ -139,30 +140,32 @@ if __name__ == '__main__':
         lcenter_position = [offset[0] + x*a_move ,y_position]
         points = [[lcenter_position[0]-length//2,lcenter_position[1]],[lcenter_position[0]+length//2,lcenter_position[1]]]
         points=n.array(points)*DBU
+        points = [[round(points[0][0],-2),round(points[0][1],-2)],[round(points[1][0],-2),round(points[1][1],-2)]]
         a1 = []
         for p in points:
             a1.append(Point.new(int(p[0]), int(p[1])))
-        cell.shapes(m_index).insert(Path.new(a1,wd))
+        cell.shapes(m_index).insert(Path.new(a1,wd+0.2*DBU))
 
         # left
         rcenter_position = [offset[0] - x*a_move ,y_position]
         points = [[rcenter_position[0]-length//2,rcenter_position[1]],[rcenter_position[0]+length//2,rcenter_position[1]]]
         points=n.array(points)*DBU
+        points = [[round(points[0][0],-2),round(points[0][1],-2)],[round(points[1][0],-2),round(points[1][1],-2)]]
         a1 = []
         for p in points:
             a1.append(Point.new(int(p[0]), int(p[1])))
-        cell.shapes(m_index).insert(Path.new(a1,wd))
+        cell.shapes(m_index).insert(Path.new(a1,wd+0.2*DBU))
 
         # middle
-        print(f'ypos = {x,y_position}')
 
         if -20 + (offset[1]-200) < y_position < 20 + (offset[1]-200):
             points = [lcenter_position,rcenter_position]
             points=n.array(points)*DBU
+            points = [[round(points[0][0],-2),round(points[0][1],-2)],[round(points[1][0],-2),round(points[1][1],-2)]]
             a1 = []
             for p in points:
                 a1.append(Point.new(int(p[0]), int(p[1])))
-            cell.shapes(m_index).insert(Path.new(a1,wd))
+            cell.shapes(m_index).insert(Path.new(a1,wd+0.2*DBU))
 
     offset = [1050,offset_y]
 
@@ -176,30 +179,31 @@ if __name__ == '__main__':
         # right
         lcenter_position = [offset[0] - 110 , y_position]
         points = [[lcenter_position[0]-length//2,lcenter_position[1]],[lcenter_position[0]+length//2,lcenter_position[1]]]
+        
         points=n.array(points)*DBU
+        points = [[round(points[0][0],-2),round(points[0][1],-2)],[round(points[1][0],-2),round(points[1][1],-2)]]
         a1 = []
         for p in points:
             a1.append(Point.new(int(p[0]), int(p[1])))
-        cell.shapes(m_index).insert(Path.new(a1,wd))
+        cell.shapes(m_index).insert(Path.new(a1,wd+0.2*DBU))
 
         # left
         rcenter_position = [offset[0] + 110,y_position]
         points = [[rcenter_position[0]-length//2,rcenter_position[1]],[rcenter_position[0]+length//2,rcenter_position[1]]]
         points=n.array(points)*DBU
+        points = [[round(points[0][0],-2),round(points[0][1],-2)],[round(points[1][0],-2),round(points[1][1],-2)]]
         a1 = []
         for p in points:
             a1.append(Point.new(int(p[0]), int(p[1])))
-        cell.shapes(m_index).insert(Path.new(a1,wd))
+        cell.shapes(m_index).insert(Path.new(a1,wd+0.2*DBU))
 
         # middle
         mcenter_position = [offset[0] - 110 + x*0.4 , y_position]
         points = [[mcenter_position[0]-length//2,mcenter_position[1]],[mcenter_position[0]+length//2,mcenter_position[1]]]
-        print(points)
         points=n.array(points)*DBU
+        points = [[round(points[0][0],-2),round(points[0][1],-2)],[round(points[1][0],-2),round(points[1][1],-2)]]
         a1 = []
         for p in points:
             a1.append(Point.new(int(p[0]), int(p[1])))
-        cell.shapes(m_index).insert(Path.new(a1,wd))   
-    
-   
+        cell.shapes(m_index).insert(Path.new(a1,wd+0.2*DBU))   
         

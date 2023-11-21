@@ -20,3 +20,15 @@ https://github.com/mattvenn/caravel_walkthrough.git
 http://opencircuitdesign.com/magic/commandref/lef.html
 logo magic gds -> lef
 
+
+
+volare ls-remote --pdk gf180mcu
+volare enable --pdk gf180mcu dd7771c384ed36b91a25e9f8b314355fc26561be
+
+
+
+./lvs/lvs_config.json
+./openlane/user_project_wrapper/
+
+lorem ipsum
+https://www.loremipzum.com/ja
