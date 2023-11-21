@@ -29,6 +29,15 @@ volare enable --pdk gf180mcu dd7771c384ed36b91a25e9f8b314355fc26561be
 
 ./lvs/lvs_config.json
 ./openlane/user_project_wrapper/
+./openlane/user_project_wrapper/config.json vdd vss
 
 lorem ipsum
 https://www.loremipzum.com/ja
+
+
+
+$ chmod 600 ~/.ssh/id_rsa_efabless
+Host efabless repositories.efabless.com
+  HostName repositories.efabless.com
+  IdentityFile ~/.ssh/id_rsa_efabless_home
+  User git

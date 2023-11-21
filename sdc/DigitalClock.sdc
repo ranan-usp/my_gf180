@@ -1,15 +1,13 @@
 ###############################################################################
 # Created by write_sdc
-# Tue Nov 21 03:26:11 2023
+# Tue Nov 21 11:40:33 2023
 ###############################################################################
 current_design DigitalClock
 ###############################################################################
 # Timing Constraints
 ###############################################################################
-create_clock -name clk -period 24.0000 [get_ports {clk}]
-set_clock_transition 0.1500 [get_clocks {clk}]
+create_clock -name clk -period 24.0000 
 set_clock_uncertainty 0.2500 clk
-set_propagated_clock [get_clocks {clk}]
 set_clock_latency -source -min 4.6500 [get_clocks {clk}]
 set_clock_latency -source -max 5.5700 [get_clocks {clk}]
 ###############################################################################
@@ -51,7 +49,6 @@ set_load -pin_load 0.1900 [get_ports {seconds_oeb[3]}]
 set_load -pin_load 0.1900 [get_ports {seconds_oeb[2]}]
 set_load -pin_load 0.1900 [get_ports {seconds_oeb[1]}]
 set_load -pin_load 0.1900 [get_ports {seconds_oeb[0]}]
-set_input_transition 0.6100 [get_ports {clk}]
 set_timing_derate -early 0.9500
 set_timing_derate -late 1.0500
 ###############################################################################

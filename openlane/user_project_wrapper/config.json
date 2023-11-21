@@ -40,7 +40,7 @@
 		"dir::../../spef/multicorner/user_proj_example.nom.spef",
 		"dir::../../spef/multicorner/user_proj_example.max.spef"
 	],
-	"FP_PDN_MACRO_HOOKS": "DigitalClock vdd vss vdd vss, anan_logo vdd vss vdd vss",
+	"FP_PDN_MACRO_HOOKS": "DigitalClock vdd vss vdd vss, mprj vdd vss vdd vss, anan_logo vdd vss vdd vss",
 	"QUIT_ON_SYNTH_CHECKS": 0,
 	"FP_PDN_CHECK_NODES": 0,
 	"SYNTH_ELABORATE_ONLY": 1,
